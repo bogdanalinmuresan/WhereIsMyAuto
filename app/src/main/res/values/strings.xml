@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Testwikitude</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_architect_view">architectView</string>
+    <string name="title_activity_arcam">ARcamActivity</string>
+    <string name="ARButton">lanzar</string>
+</resources>
