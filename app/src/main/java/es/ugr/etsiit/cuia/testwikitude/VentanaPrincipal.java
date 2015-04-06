@@ -39,9 +39,13 @@ public class VentanaPrincipal extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void sendMessage(View view) {
+    public void LanzarAR(View view) {
         Intent intent = new Intent(this, ARcamActivity.class);
         startActivity(intent);
 
+    }
+    public void LanzarGPS (View view){
+        Intent intent =new Intent(this,AndroidLocationActivity.class);
+        startActivity(intent);
     }
 }
