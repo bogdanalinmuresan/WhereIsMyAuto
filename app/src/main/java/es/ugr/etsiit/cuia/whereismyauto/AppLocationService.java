@@ -1,4 +1,4 @@
-package es.ugr.etsiit.cuia.testwikitude;
+package es.ugr.etsiit.cuia.whereismyauto;
 
 
 import android.app.Service;

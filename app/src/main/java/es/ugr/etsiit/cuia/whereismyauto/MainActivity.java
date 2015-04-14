@@ -1,26 +1,38 @@
-package es.ugr.etsiit.cuia.testwikitude;
+package es.ugr.etsiit.cuia.whereismyauto;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.Window;
 
+import es.ugr.etsiit.cuia.whereismyauto.R;
 
-public class VentanaPrincipal extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ventana_principal);
+        setContentView(R.layout.activity_main);
+
+        Handler handler = new Handler();
+
+        handler.postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), VentanaPrincipal.class);
+                startActivity(intent);
+            }
+        }, 5000);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_ventana_principal, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -37,15 +49,5 @@ public class VentanaPrincipal extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void LanzarAR(View view) {
-        Intent intent = new Intent(this, ARcamActivity.class);
-        startActivity(intent);
-
-    }
-    public void LanzarGPS (View view){
-        Intent intent =new Intent(this,AndroidLocationActivity.class);
-        startActivity(intent);
     }
 }

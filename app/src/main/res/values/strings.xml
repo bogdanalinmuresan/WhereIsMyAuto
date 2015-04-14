@@ -8,4 +8,6 @@
     <string name="ARButton">AR button</string>
     <string name="locationButton">Get Location</string>
     <string name="title_activity_android_location">AndroidLocationActivity</string>
+    <string name="title_activity_lista_localizaciones">ListaLocalizaciones</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
