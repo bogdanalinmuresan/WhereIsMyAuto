@@ -10,15 +10,7 @@
     android:background="#ff3c42ff"
     android:id="@+id/Linear">
 
-    <Button
-        android:layout_width="123dp"
-        android:layout_height="82dp"
-        android:id="@+id/ARbutton"
-        android:text="@string/ARButton"
-        android:onClick="LanzarAR"
-        android:layout_gravity="center_horizontal"></Button>
-
-    <Button
+    <!--<Button
         android:layout_width="133dp"
         android:layout_height="73dp"
 
@@ -26,6 +18,34 @@
         android:text="@string/locationButton"
         android:enabled="true"
         android:onClick="LanzarGPS"
-        android:layout_gravity="center_horizontal"></Button>
+        android:layout_gravity="center_horizontal"></Button>-->
+
+    <ImageButton
+        android:layout_width="108dp"
+        android:layout_height="143dp"
+        android:id="@+id/locationButton"
+        android:onClick="LanzarGPS"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/pin" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Recordar localizacion"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <!--<Button
+        android:layout_width="123dp"
+        android:layout_height="82dp"
+        android:id="@+id/ARbutton"
+        android:text="@string/ARButton"
+        android:onClick="LanzarAR"
+        android:layout_gravity="center_horizontal"></Button>-->
+
+
 
 </LinearLayout>

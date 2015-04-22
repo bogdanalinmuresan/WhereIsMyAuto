@@ -17,6 +17,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         Handler handler = new Handler();
 
         handler.postDelayed(new Runnable(){

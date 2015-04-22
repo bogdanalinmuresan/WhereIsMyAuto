@@ -44,14 +44,14 @@ public class AndroidLocationActivity extends ActionBarActivity {
                     double latitude = gpsLocation.getLatitude();
                     double longitude = gpsLocation.getLongitude();
                     double altitud = gpsLocation.getAltitude();
-                    Toast.makeText(
+                    /*Toast.makeText(
                             getApplicationContext(),
                             "Mobile Location (GPS): \nLatitude: " + latitude
                                     + "\nLongitude: " + longitude
                                     + "\nAltitud: " + altitud,
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_SHORT).show();*/
 
-                    bdwhereismyauto = new BDWhereIsMyAuto(getApplicationContext(), "DBLocalizaciones", null, 1);
+                    /*bdwhereismyauto = new BDWhereIsMyAuto(getApplicationContext(), "DBLocalizaciones", null, 1);
                     db = bdwhereismyauto.getWritableDatabase();
 
                     ContentValues nuevoRegistro = new ContentValues();
@@ -61,7 +61,7 @@ public class AndroidLocationActivity extends ActionBarActivity {
                     nuevoRegistro.put("longitud",longitude);
                     nuevoRegistro.put("altitud",altitud);
 
-                    db.insert("Localizaciones", null, nuevoRegistro);
+                    db.insert("Localizaciones", null, nuevoRegistro);*/
                 } else {
                     showSettingsAlert("GPS");
                 }
@@ -81,12 +81,12 @@ public class AndroidLocationActivity extends ActionBarActivity {
                     double latitude = nwLocation.getLatitude();
                     double longitude = nwLocation.getLongitude();
                     double altitud = nwLocation.getAltitude();
-                    Toast.makeText(
+                    /*Toast.makeText(
                             getApplicationContext(),
                             "Mobile Location (NW): \nLatitude: " + latitude
                                     + "\nLongitude: " + longitude
                                     + "\nAltitud: " + altitud,
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_SHORT).show();*/
                 } else {
                     showSettingsAlert("NETWORK");
                 }
