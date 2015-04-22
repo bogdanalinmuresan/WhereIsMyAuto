@@ -24,6 +24,7 @@ public class MainActivity extends ActionBarActivity {
             public void run() {
                 Intent intent = new Intent(getApplicationContext(), VentanaPrincipal.class);
                 startActivity(intent);
+                finish();
             }
         }, 5000);
     }

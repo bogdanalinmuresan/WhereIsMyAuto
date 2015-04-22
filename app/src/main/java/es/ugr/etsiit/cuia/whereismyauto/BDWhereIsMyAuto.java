@@ -14,9 +14,9 @@ public class BDWhereIsMyAuto extends SQLiteOpenHelper {
     String sqlCreateTablaLocalizaciones =	"CREATE TABLE " + Tablas.Localizaciones.NOMBRE_TABLA_LOCALIZACIONES + "(" +
             Tablas.Localizaciones._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             Tablas.Localizaciones.NOMBRE + " TEXT, " +
-            Tablas.Localizaciones.CATEGORIA + " BOOL" +
-            Tablas.Localizaciones.LATITUD + " FLOAT" +
-            Tablas.Localizaciones.LONGITUD + " FLOAT" +
+            Tablas.Localizaciones.CATEGORIA + " BOOL," +
+            Tablas.Localizaciones.LATITUD + " FLOAT," +
+            Tablas.Localizaciones.LONGITUD + " FLOAT," +
             Tablas.Localizaciones.ALTITUD + " FLOAT" +
             ")";
 

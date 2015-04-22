@@ -1,6 +1,7 @@
 package es.ugr.etsiit.cuia.whereismyauto;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -10,10 +11,23 @@ import android.view.Window;
 
 public class VentanaPrincipal extends ActionBarActivity {
 
+    private BDWhereIsMyAuto bdwhereismyauto;
+    private SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_principal);
+
+        bdwhereismyauto = new BDWhereIsMyAuto(this, "DBLocalizaciones", null, 1);
+        db = bdwhereismyauto.getWritableDatabase();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        bdwhereismyauto = new BDWhereIsMyAuto(this, "DBLocalizaciones", null, 1);
+        db = bdwhereismyauto.getWritableDatabase();
     }
 
     @Override
