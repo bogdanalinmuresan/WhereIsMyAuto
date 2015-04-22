@@ -1,5 +1,6 @@
 package es.ugr.etsiit.cuia.whereismyauto;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
@@ -12,7 +13,7 @@ import android.view.Window;
 import android.widget.ListView;
 
 
-public class ListaLocalizaciones extends ActionBarActivity {
+public class ListaLocalizaciones extends Activity {
 
     private ProgressDialog progressdialog;
     private Handler progresshandler;

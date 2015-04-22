@@ -1,5 +1,6 @@
 package es.ugr.etsiit.cuia.whereismyauto;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -18,7 +19,7 @@ import android.widget.EditText;
 import android.text.Editable;
 import java.lang.String;
 
-public class VentanaPrincipal extends ActionBarActivity {
+public class VentanaPrincipal extends Activity {
 
     private BDWhereIsMyAuto bdwhereismyauto;
     private SQLiteDatabase db;
@@ -28,9 +29,10 @@ public class VentanaPrincipal extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ventana_principal);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
 
         appLocationService = new AppLocationService(
                 VentanaPrincipal.this);
@@ -80,14 +82,14 @@ public class VentanaPrincipal extends ActionBarActivity {
         // Mostramos un popup para introducir el nombre de la nueva localizacion
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-        alert.setTitle("Title");
-        alert.setMessage("Message");
+        alert.setTitle("Nueva localización");
+        alert.setMessage("Introduce un nombre");
 
         // Set an EditText view to get user input
         final EditText input = new EditText(this);
         alert.setView(input);
 
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton("Recordar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //String value = input.getText();
                 Editable value = input.getText();
@@ -122,13 +124,18 @@ public class VentanaPrincipal extends ActionBarActivity {
             }
         });
 
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton("Atrás", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 // Canceled.
             }
         });
 
         alert.show();
+    }
+
+    public void LanzarLista (View view){
+        Intent intent = new Intent(this, ListaLocalizaciones.class);
+        startActivity(intent);
     }
 
     public void showSettingsAlert(String provider) {

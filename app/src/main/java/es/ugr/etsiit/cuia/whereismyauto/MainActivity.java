@@ -1,6 +1,8 @@
 package es.ugr.etsiit.cuia.whereismyauto;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,16 +12,24 @@ import android.view.Window;
 
 import es.ugr.etsiit.cuia.whereismyauto.R;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         Handler handler = new Handler();
+        Handler handler_sonido = new Handler();
+
+        handler_sonido.postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                MediaPlayer mp=MediaPlayer.create(getApplicationContext(),R.raw.alarma);
+                mp.start();
+            }
+        }, 1000);
 
         handler.postDelayed(new Runnable(){
             @Override
@@ -28,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 5000);
+        }, 1000);
     }
 
 

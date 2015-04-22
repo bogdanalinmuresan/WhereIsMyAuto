@@ -63,10 +63,6 @@
             android:name=".ARcamActivity"
             android:label="@string/title_activity_arcam" >
         </activity>
-        <activity
-            android:name=".AndroidLocationActivity"
-            android:label="@string/title_activity_android_location" >
-        </activity>
 
         <activity
             android:name=".ListaLocalizaciones"
