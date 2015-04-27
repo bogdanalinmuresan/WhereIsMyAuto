@@ -1,13 +1,22 @@
 package es.ugr.etsiit.cuia.whereismyauto;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
 
 /**
  * Created by samuel on 8/4/15.
  */
 public class Comunicaciones {
+
+    protected Context context;
+
+    public Comunicaciones (Context context) {
+        this.context = context;
+    }
 
     private boolean comprobar_si_existe(ContentValues contenido, SQLiteDatabase db){
         String[] columnas = new String[]{
@@ -37,6 +46,5 @@ public class Comunicaciones {
     private void actualizar_localizacion(ContentValues contenido, SQLiteDatabase db){
 
     }
-    
 
 }

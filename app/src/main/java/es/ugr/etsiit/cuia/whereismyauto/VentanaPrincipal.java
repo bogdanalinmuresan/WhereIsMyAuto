@@ -136,6 +136,7 @@ public class VentanaPrincipal extends Activity {
     public void LanzarLista (View view){
         Intent intent = new Intent(this, ListaLocalizaciones.class);
         startActivity(intent);
+        finish();
     }
 
     public void showSettingsAlert(String provider) {

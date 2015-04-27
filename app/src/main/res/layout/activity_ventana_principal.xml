@@ -8,7 +8,8 @@
     android:orientation="vertical"
     android:weightSum="4"
     android:background="#ff7ecaff"
-    android:screenOrientation="landscape"
+    android:configChanges="orientation"
+    android:screenOrientation="portrait"
     android:id="@+id/Linear">
 
     <!--<Button
