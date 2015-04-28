@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="es.ugr.etsiit.cuia.testwikitude" >
+    package="es.ugr.etsiit.cuia.whereismyauto" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -37,19 +37,17 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
-            android:name=".VentanaPrincipal"
-            android:configChanges="screenSize|orientation"
-            android:label="@string/app_name" >
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,12 +55,18 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".VentanaPrincipal"
+            android:configChanges="screenSize|orientation"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name=".ARcamActivity"
             android:label="@string/title_activity_arcam" >
         </activity>
+
         <activity
-            android:name=".AndroidLocationActivity"
-            android:label="@string/title_activity_android_location" >
+            android:name=".ListaLocalizaciones"
+            android:label="@string/title_activity_lista_localizaciones" >
         </activity>
 
         <service

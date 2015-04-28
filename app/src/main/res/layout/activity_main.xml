@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="es.ugr.etsiit.cuia.whereismyauto.MainActivity"
+    android:background="#ff7ecaff"
+    android:configChanges="orientation"
+    android:screenOrientation="portrait"
+    android:clickable="true">
+
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/parking"
+        android:layout_marginTop="49dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="¿Where is my auto?"
+        android:id="@+id/textView"
+        android:layout_marginTop="48dp"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:singleLine="true"
+        android:phoneNumber="false"
+        android:textStyle="normal|bold|italic"
+        android:textColor="#ff1820b1"
+        android:typeface="serif"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

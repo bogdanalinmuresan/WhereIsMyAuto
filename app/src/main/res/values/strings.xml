@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Testwikitude</string>
+    <string name="app_name">Where is my auto</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -8,4 +8,6 @@
     <string name="ARButton">AR button</string>
     <string name="locationButton">Get Location</string>
     <string name="title_activity_android_location">AndroidLocationActivity</string>
+    <string name="title_activity_lista_localizaciones">ListaLocalizaciones</string>
+    <string name="title_activity_main">Where is my auto</string>
 </resources>
