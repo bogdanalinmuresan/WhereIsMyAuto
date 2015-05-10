@@ -16,24 +16,21 @@
         android:layout_height="200dp"
         android:id="@+id/imageView"
         android:src="@drawable/parking"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="¿Where is my auto?"
         android:id="@+id/textView"
-        android:layout_marginTop="48dp"
-        android:textAlignment="center"
+        android:layout_marginTop="50dp"
         android:textSize="30dp"
-        android:singleLine="true"
-        android:phoneNumber="false"
-        android:textStyle="normal|bold|italic"
-        android:textColor="#ff1820b1"
-        android:typeface="serif"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
+
 </RelativeLayout>

@@ -146,9 +146,9 @@ public class VentanaPrincipal extends Activity {
         alertDialog.setTitle(provider + " SETTINGS");
 
         alertDialog
-                .setMessage(provider + " is not enabled! Want to go to settings menu?");
+                .setMessage("¡" + provider + " no está activado! ¿Quieres ir al menú de ajustes?");
 
-        alertDialog.setPositiveButton("Settings",
+        alertDialog.setPositiveButton("Ajustes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(
@@ -157,7 +157,7 @@ public class VentanaPrincipal extends Activity {
                     }
                 });
 
-        alertDialog.setNegativeButton("Cancel",
+        alertDialog.setNegativeButton("Cancelar",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
