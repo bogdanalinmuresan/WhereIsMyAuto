@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,10 +42,21 @@ public class ListaLocalizaciones extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_lista_localizaciones);
-
+        listaLocalizaciones = (ListView)findViewById(R.id.lvInventario);
+        listaLocalizaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                                   public void onItemClick(AdapterView<?> parent, View view,
+                                                                           int position, long id) {
+                                                        LanzarAR(view);
+                                                   }
+                                               });
         bdwhereisauto = new BDWhereIsMyAuto(this, "DBLocalizaciones", null, 1);
         db = bdwhereisauto.getWritableDatabase();
         obtenerLocalizaciones();
+    }
+
+    public void LanzarAR(View view){
+        Intent intent = new Intent(this, ARcamActivity.class);
+        startActivity(intent);
     }
 
     @Override

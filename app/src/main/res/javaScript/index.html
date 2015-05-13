@@ -14,10 +14,6 @@
     <script src="architect://architect.js"></script>
     <script src="../ade.js"></script>
 
-    <!-- positioning of poi-radar -->
-    <link rel="stylesheet" href="css/poi-radar.css" />
-    
-
     <!-- jquery mobile CSS -->
     <link rel="stylesheet" href="jquery/jquery.mobile-1.3.2.min.css" />
     <!-- required to set background transparent & enable "click through" -->
@@ -28,26 +24,14 @@
     <script type="text/javascript" src="jquery/jquery.mobile-1.3.2.min.js"></script>
 
 
-    <!-- marker representation-->
-    <script src="js/marker.js"></script>    
-
     <!-- World logic-->
-    <script type="text/javascript" src="js/addingradar.js"></script>
-
-    <!-- radar component -->
-    <script type="text/javascript" src="js/radar.js"></script>
+    <script type="text/javascript" src="js/poiatlocation.js"></script>
 </head>
     
     <body >
      <div data-role="page" id="page1" style="background: none;" >
             
             <!-- MAIN PAGE CONTENT -->
-
-            <!--
-                The position of the radar and its size are defined using a DOM element.
-                Wikitude SDK radar will be drawn into this div.
-            -->
-            <div class="radarContainer_left" id="radarContainer"></div>
 
             <!-- transparent footer-->
             <div data-role="footer" class="ui-bar" data-theme="f" data-position="fixed" style="text-align:center;">
@@ -60,33 +44,6 @@
                   <p style="text-align:right;" id="status-message">Trying to find out where you are</p>
                 </div>
                 
-            </div>
-
-
-
-            <!-- PANELS, ONLY VISIBLE ON DEMAND -->
-
-            <!-- panel containing POI detail information -->
-            <div data-role="panel" id="panel-poidetail" data-position="right" data-display="overlay" style="background-color:#F0F0F0;" data-theme="c">
-
-                <!-- header with "close" button -->
-                <div data-role="header" data-theme="c">
-                    <h1>Details</h1>
-                    <a href="#header" data-rel="close">Close</a>
-                </div>
-
-                <!-- content of POI detail page, you may also add thumbnails etc. here if you like -->
-                 <div data-role="content">
-
-                    <!-- title -->
-                    <h3 id="poi-detail-title"></h3>
-
-                    <!-- description -->
-                    <h4 id="poi-detail-description"></h4>
-
-                    <!-- distance -->
-                    <h4>Distance: <a id="poi-detail-distance"></a></h4>
-                </div>
             </div>
 
         </div>
