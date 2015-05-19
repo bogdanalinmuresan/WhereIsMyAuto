@@ -6,10 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,8 +20,6 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.content.Context;
 
 
 public class ListaLocalizaciones extends Activity {
@@ -43,19 +40,40 @@ public class ListaLocalizaciones extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_lista_localizaciones);
         listaLocalizaciones = (ListView)findViewById(R.id.lvInventario);
-        listaLocalizaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                                   public void onItemClick(AdapterView<?> parent, View view,
-                                                                           int position, long id) {
-                                                        LanzarAR(view);
-                                                   }
-                                               });
+        listaLocalizaciones.setOnItemClickListener(
+        new AdapterView.OnItemClickListener() {
+                             public void onItemClick(AdapterView<?> parent, View view,
+                                                               int position, long id) {
+
+
+                                 obtenerDatosLocalizaciones();
+                                 datosLocalizaciones.moveToPosition(position);
+                                 String nombre=datosLocalizaciones.getString(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.NOMBRE));
+                                 float latitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LATITUD));
+                                 float longitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LONGITUD));
+                                 float altitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.ALTITUD));
+                                 //int id_tmp= datosLocalizaciones.getInt(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones._ID));
+/*
+                 Context context = getApplicationContext();
+                 Toast.makeText(
+                   context,
+                   " posicion obtenida " +nombre+" "+ String.valueOf(latitude) + " " + String.valueOf(longitude) + " "
+                           + String.valueOf(altitude) , Toast.LENGTH_SHORT).show();
+*/
+                    LanzarAR(view,nombre,longitude,altitude,latitude);
+          }
+           });
         bdwhereisauto = new BDWhereIsMyAuto(this, "DBLocalizaciones", null, 1);
         db = bdwhereisauto.getWritableDatabase();
         obtenerLocalizaciones();
     }
 
-    public void LanzarAR(View view){
+    public void LanzarAR(View view,String nombre,Float longitude,Float altitude,Float latitude){
         Intent intent = new Intent(this, ARcamActivity.class);
+        intent.putExtra("nombre",nombre);
+        intent.putExtra("longitude",longitude);
+        intent.putExtra("altitude",altitude);
+        intent.putExtra("latitude",latitude);
         startActivity(intent);
     }
 
@@ -157,7 +175,8 @@ public class ListaLocalizaciones extends Activity {
                 Tablas.Localizaciones.NOMBRE,
                 Tablas.Localizaciones.CATEGORIA,
                 Tablas.Localizaciones.ALTITUD,
-                Tablas.Localizaciones.LATITUD
+                Tablas.Localizaciones.LATITUD,
+                Tablas.Localizaciones.LONGITUD
         };
         datosLocalizaciones = db.query(Tablas.Localizaciones.NOMBRE_TABLA_LOCALIZACIONES, columnas, null, null, null, null, Tablas.Localizaciones._ID);
     }

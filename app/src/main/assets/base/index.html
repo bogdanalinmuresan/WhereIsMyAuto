@@ -1,18 +1,36 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--  basic meta information -->
+
 
 	<title></title>
 	<link href="css/style.css" media="all" rel="stylesheet" type="text/css" />
 
 	<script src="architect://architect.js"></script>
 	<script type="text/javascript" src="js/ade.js"></script>
+
+
+
+    <script type="text/javascript" src="js/ra.js"></script>
 </head>
 
 <body>
-	<script type="text/javascript" src="js/ra.js"></script>
+
+    <!-- panel containing POI detail information -->
+    <div data-role="panel" id="panel-poidetail" data-position="right" data-display="overlay" style="background-color:#F0F0F0;" data-theme="c">
+
+        <!-- content of POI detail page, you may also add thumbnails etc. here if you like -->
+        <div class="content">
+
+            <!-- distance -->
+            <div id="poi-detail-distance"></div>
+            <div id="metros">metros</div>
+
+        </div>
+    </div>
 </body>
 
 </html>

@@ -10,14 +10,12 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
-import android.text.Editable;
-import java.lang.String;
 
 public class VentanaPrincipal extends Activity {
 
@@ -106,6 +104,10 @@ public class VentanaPrincipal extends Activity {
                     double latitude = gpsLocation.getLatitude();
                     double longitude = gpsLocation.getLongitude();
                     double altitud = gpsLocation.getAltitude();
+
+
+                    //Context context = getApplicationContext();
+                    //Toast.makeText(context, "Recordar posicion" + latitude + " " + longitude + " " + altitud, Toast.LENGTH_SHORT).show();
 
                     bdwhereismyauto = new BDWhereIsMyAuto(getApplicationContext(), "DBLocalizaciones", null, 1);
                     db = bdwhereismyauto.getWritableDatabase();
