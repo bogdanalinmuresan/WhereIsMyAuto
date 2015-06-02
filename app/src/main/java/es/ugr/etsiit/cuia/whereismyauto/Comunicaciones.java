@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -50,6 +51,7 @@ public class Comunicaciones {
         };
         //Cursor c = db.query(Tablas.Localizaciones.NOMBRE_TABLA_LOCALIZACIONES, columnas, "nombre = '" + contenido.getAsString("nombre") + "'", null, null, null, Tablas.Localizaciones.NOMBRE);
         db.delete(Tablas.Localizaciones.NOMBRE_TABLA_LOCALIZACIONES, "nombre = '" + contenido.getAsString("nombre") + "'",null);
+        Toast.makeText( this.context,"La ubicación " + contenido.getAsString("nombre") + " ha sido eliminada correctamente", Toast.LENGTH_SHORT).show();
     }
 
     public void actualizar_localizacion(ContentValues contenido, SQLiteDatabase db){

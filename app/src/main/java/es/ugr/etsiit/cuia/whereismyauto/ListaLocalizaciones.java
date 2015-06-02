@@ -41,7 +41,8 @@ public class ListaLocalizaciones extends Activity {
     private Cursor datosLocalizaciones;
     private ListView listaLocalizaciones;
     private int posicion_a_eliminar = 0;
-    private Comunicaciones com = new Comunicaciones(getApplicationContext());
+    private Comunicaciones com = new Comunicaciones(this);
+
 
     private BDWhereIsMyAuto bdwhereisauto;
 
@@ -52,18 +53,18 @@ public class ListaLocalizaciones extends Activity {
         setContentView(R.layout.activity_lista_localizaciones);
         listaLocalizaciones = (ListView)findViewById(R.id.lvInventario);
         listaLocalizaciones.setOnItemClickListener(
-        new AdapterView.OnItemClickListener() {
-                             public void onItemClick(AdapterView<?> parent, View view,
-                                                               int position, long id) {
+                new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> parent, View view,
+                                            int position, long id) {
 
 
-                                 obtenerDatosLocalizaciones();
-                                 datosLocalizaciones.moveToPosition(position);
-                                 String nombre=datosLocalizaciones.getString(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.NOMBRE));
-                                 float latitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LATITUD));
-                                 float longitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LONGITUD));
-                                 float altitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.ALTITUD));
-                                 //int id_tmp= datosLocalizaciones.getInt(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones._ID));
+                        obtenerDatosLocalizaciones();
+                        datosLocalizaciones.moveToPosition(position);
+                        String nombre = datosLocalizaciones.getString(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.NOMBRE));
+                        float latitude = datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LATITUD));
+                        float longitude = datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LONGITUD));
+                        float altitude = datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.ALTITUD));
+                        //int id_tmp= datosLocalizaciones.getInt(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones._ID));
 /*
                  Context context = getApplicationContext();
                  Toast.makeText(
@@ -71,9 +72,9 @@ public class ListaLocalizaciones extends Activity {
                    " posicion obtenida " +nombre+" "+ String.valueOf(latitude) + " " + String.valueOf(longitude) + " "
                            + String.valueOf(altitude) , Toast.LENGTH_SHORT).show();
 */
-                    LanzarAR(view,nombre,longitude,altitude,latitude);
-          }
-           });
+                        LanzarAR(view, nombre, longitude, altitude, latitude);
+                    }
+                });
         listaLocalizaciones.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
@@ -84,29 +85,29 @@ public class ListaLocalizaciones extends Activity {
                 //Log.v("long clicked", "pos: " + pos);
                 //Toast.makeText(getApplicationContext(),"Pulsado largo", Toast.LENGTH_SHORT).show();
 
-                AlertDialog.Builder alert = new AlertDialog.Builder(getApplicationContext());
+                AlertDialog.Builder alert = new AlertDialog.Builder(ListaLocalizaciones.this);
 
-                alert.setTitle("Nueva localización");
-                alert.setMessage("Introduce un nombre");
+                alert.setTitle("Eliminar una ubicacion");
+                alert.setMessage("¿Está seguro de eliminar la ubicación?");
 
                 // Set an EditText view to get user input
-                final EditText input = new EditText(getApplicationContext());
-                alert.setView(input);
+                //final EditText input = new EditText(getApplicationContext());
+                //alert.setView(input);
 
                 alert.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         datosLocalizaciones.moveToPosition(posicion_a_eliminar);
-                        String nombre=datosLocalizaciones.getString(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.NOMBRE));
-                        float latitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LATITUD));
-                        float longitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LONGITUD));
-                        float altitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.ALTITUD));
+                        String nombre = datosLocalizaciones.getString(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.NOMBRE));
+                        float latitude = datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LATITUD));
+                        float longitude = datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LONGITUD));
+                        float altitude = datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.ALTITUD));
 
                         ContentValues registro = new ContentValues();
                         registro.put("nombre", nombre);
 
-                        com.eliminar_localizacion(registro,db);
-
-
+                        com.eliminar_localizacion(registro, db);
+                        finish();
+                        startActivity(getIntent());
                     }
                 });
 
@@ -117,7 +118,6 @@ public class ListaLocalizaciones extends Activity {
                 });
 
                 alert.show();
-
                 return true;
             }
         });

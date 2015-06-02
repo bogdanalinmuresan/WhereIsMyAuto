@@ -8,6 +8,8 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.wikitude.architect.ArchitectView;
@@ -35,7 +37,9 @@ public class ARcamActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_arcam);
+
 
         // la ruta del architectView en nuestro XML
         this.architectView = (ArchitectView) this.findViewById(R.id.architectView);
