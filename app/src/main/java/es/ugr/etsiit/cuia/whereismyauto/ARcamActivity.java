@@ -225,7 +225,7 @@ public class ARcamActivity extends Activity {
         } else if (locationManager // Puntos Wifi o senal telefonica
                 .isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
 
-            // obtengo la ultima localizacion del usuario, si no la hay, es null
+            // obtengo la última localizacion del usuario, si no la hay, es null
             Location location = locationManager
                     .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             if (location != null) {
@@ -236,8 +236,7 @@ public class ARcamActivity extends Activity {
 
             // actualizo la posicion del usuario cada 5 seg = 5000 ms
             locationManager.requestLocationUpdates(
-                    LocationManager.NETWORK_PROVIDER, 1000, 0,
-                    locationListener);
+                    LocationManager.NETWORK_PROVIDER, 1000, 0,locationListener);
 
         } else {
             // servicio desactivado
