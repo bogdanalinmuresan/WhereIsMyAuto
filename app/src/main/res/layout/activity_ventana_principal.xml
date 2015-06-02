@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:focusableInTouchMode="false"
     android:orientation="vertical"
-    android:background="#ff7ecaff"
+    android:background="#ffe8fff8"
     android:configChanges="orientation"
     android:screenOrientation="portrait"
     android:id="@+id/Linear">
@@ -27,7 +27,7 @@
         android:background="@drawable/pin"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="80dp" />
 
     <TextView
         android:layout_width="wrap_content"
