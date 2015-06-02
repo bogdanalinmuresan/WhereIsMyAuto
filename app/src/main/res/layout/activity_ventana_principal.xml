@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:focusableInTouchMode="false"
     android:orientation="vertical"
-    android:background="#ff7ecaff"
+    android:background="#ffe8fff8"
     android:configChanges="orientation"
     android:screenOrientation="portrait"
     android:id="@+id/Linear">
@@ -20,14 +20,14 @@
         android:layout_gravity="center_horizontal"></Button>-->
 
     <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
         android:id="@+id/locationButton"
         android:onClick="LanzarGPS"
         android:background="@drawable/pin"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="60dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,8 +41,8 @@
         android:textSize="20dp" />
 
     <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/imageButton"
         android:onClick="LanzarLista"
         android:layout_centerHorizontal="true"
