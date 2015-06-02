@@ -1,14 +1,21 @@
 package es.ugr.etsiit.cuia.whereismyauto;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,8 +25,10 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class ListaLocalizaciones extends Activity {
@@ -31,6 +40,8 @@ public class ListaLocalizaciones extends Activity {
     private SQLiteDatabase db;
     private Cursor datosLocalizaciones;
     private ListView listaLocalizaciones;
+    private int posicion_a_eliminar = 0;
+    private Comunicaciones com = new Comunicaciones(getApplicationContext());
 
     private BDWhereIsMyAuto bdwhereisauto;
 
@@ -63,6 +74,53 @@ public class ListaLocalizaciones extends Activity {
                     LanzarAR(view,nombre,longitude,altitude,latitude);
           }
            });
+        listaLocalizaciones.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int pos, long id) {
+                // TODO Auto-generated method stub
+                posicion_a_eliminar = pos;
+
+                //Log.v("long clicked", "pos: " + pos);
+                //Toast.makeText(getApplicationContext(),"Pulsado largo", Toast.LENGTH_SHORT).show();
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(getApplicationContext());
+
+                alert.setTitle("Nueva localización");
+                alert.setMessage("Introduce un nombre");
+
+                // Set an EditText view to get user input
+                final EditText input = new EditText(getApplicationContext());
+                alert.setView(input);
+
+                alert.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        datosLocalizaciones.moveToPosition(posicion_a_eliminar);
+                        String nombre=datosLocalizaciones.getString(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.NOMBRE));
+                        float latitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LATITUD));
+                        float longitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.LONGITUD));
+                        float altitude=datosLocalizaciones.getFloat(datosLocalizaciones.getColumnIndex(Tablas.Localizaciones.ALTITUD));
+
+                        ContentValues registro = new ContentValues();
+                        registro.put("nombre", nombre);
+
+                        com.eliminar_localizacion(registro,db);
+
+
+                    }
+                });
+
+                alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Canceled.
+                    }
+                });
+
+                alert.show();
+
+                return true;
+            }
+        });
         bdwhereisauto = new BDWhereIsMyAuto(this, "DBLocalizaciones", null, 1);
         db = bdwhereisauto.getWritableDatabase();
         obtenerLocalizaciones();

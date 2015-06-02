@@ -3,6 +3,7 @@ package es.ugr.etsiit.cuia.whereismyauto;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,11 +17,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.net.Authenticator;
 
 public class VentanaPrincipal extends Activity {
 
     private BDWhereIsMyAuto bdwhereismyauto;
     private SQLiteDatabase db;
+    private Comunicaciones com = new Comunicaciones(this);
 
     AppLocationService appLocationService;
 
@@ -119,7 +124,13 @@ public class VentanaPrincipal extends Activity {
                     nuevoRegistro.put("longitud",longitude);
                     nuevoRegistro.put("altitud",altitud);
 
-                    db.insert("Localizaciones", null, nuevoRegistro);
+                    Boolean existe = com.comprobar_si_existe(nuevoRegistro,db);
+
+                    if (!existe) {
+                        com.insertar_localizacion(nuevoRegistro, db);
+                    }else{
+                        Toast.makeText(getApplicationContext(),"El nombre indicado ya existe", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     showSettingsAlert("GPS");
                 }

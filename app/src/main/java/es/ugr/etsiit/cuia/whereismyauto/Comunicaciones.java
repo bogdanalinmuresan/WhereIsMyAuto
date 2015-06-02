@@ -18,7 +18,7 @@ public class Comunicaciones {
         this.context = context;
     }
 
-    private boolean comprobar_si_existe(ContentValues contenido, SQLiteDatabase db){
+    public boolean comprobar_si_existe(ContentValues contenido, SQLiteDatabase db){
         String[] columnas = new String[]{
                 Tablas.Localizaciones._ID,
                 Tablas.Localizaciones.NOMBRE,
@@ -35,15 +35,24 @@ public class Comunicaciones {
             return false;
     }
 
-    private void insertar_localizacion(ContentValues contenido, SQLiteDatabase db){
-
+    public void insertar_localizacion(ContentValues contenido, SQLiteDatabase db){
+        db.insert("Localizaciones", null, contenido);
     }
 
-    private void eliminar_localizacion(ContentValues contenido, SQLiteDatabase db){
-
+    public void eliminar_localizacion(ContentValues contenido, SQLiteDatabase db){
+        String[] columnas = new String[]{
+                Tablas.Localizaciones._ID,
+                Tablas.Localizaciones.NOMBRE,
+                Tablas.Localizaciones.CATEGORIA,
+                Tablas.Localizaciones.LATITUD,
+                Tablas.Localizaciones.LONGITUD,
+                Tablas.Localizaciones.ALTITUD
+        };
+        //Cursor c = db.query(Tablas.Localizaciones.NOMBRE_TABLA_LOCALIZACIONES, columnas, "nombre = '" + contenido.getAsString("nombre") + "'", null, null, null, Tablas.Localizaciones.NOMBRE);
+        db.delete(Tablas.Localizaciones.NOMBRE_TABLA_LOCALIZACIONES, "nombre = '" + contenido.getAsString("nombre") + "'",null);
     }
 
-    private void actualizar_localizacion(ContentValues contenido, SQLiteDatabase db){
+    public void actualizar_localizacion(ContentValues contenido, SQLiteDatabase db){
 
     }
 
